@@ -82,14 +82,14 @@ describe Bar do
 # # # # # # # # # # # # # # # # # # # # # #
 
   describe '#happy_hour?', :pending => true do
-    xit "knows when it is happy hour (3:00pm to 4:00pm)" do
+    it "knows when it is happy hour (3:00pm to 4:00pm)" do
       # TODO: CONTROL TIME
 
       @bar.happy_hour
       expect(@bar.happy_hour?).to eq(true)
     end
 
-    xit "is not happy hour otherwise" do
+    it "is not happy hour otherwise" do
       # TODO: CONTROL TIME
 
       @bar.happy_hour = (3)

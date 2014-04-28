@@ -33,9 +33,9 @@ class Bar
     @menu_items << Food.new(item, price)
   end
 
-  # def happy_hour?
-  #   Time.now.hour == 15
-  # end
+  def happy_hour?
+    Time.now.hour == 15
+  end
 
 class Food
   attr_reader :name, :price

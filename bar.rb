@@ -18,7 +18,7 @@ class Bar
     end
   end
 
-  def happy_discount=(happy_discount=0)
+  def happy_discount=(happy_discount)
     if happy_discount >= 0 && happy_discount < 1
       @happy_discount = happy_discount
     elsif happy_discount >= 1
@@ -33,9 +33,9 @@ class Bar
     @menu_items << Food.new(item, price)
   end
 
-  def happy_hour?
-    Time.now.hour == 15
-  end
+  # def happy_hour?
+  #   Time.now.hour == 15
+  # end
 
 class Food
   attr_reader :name, :price

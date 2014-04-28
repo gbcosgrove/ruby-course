@@ -7,7 +7,7 @@ describe 'Exercise 0' do
     expect(result).to eq("hahaha")
   end
 
-  xit "returns 'nope' if the string is 'wishes'" do
+  it "returns 'nope' if the string is 'wishes'" do
     result = Exercises.ex0("wishes")
     expect(result).to eq("nope")
   end

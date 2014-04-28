@@ -14,7 +14,7 @@ module Exercises
   # Exercise 1
   #  - Returns the number of elements in the array
   def self.ex1(array)
-    # TODO
+    array.length
   end
 
   # Exercise 2
@@ -39,6 +39,7 @@ module Exercises
   #  - Iterates through an array and `puts` each element
   def self.ex5(array)
     # TODO
+    array.each {|x| puts x}
   end
 
   # Exercise 6

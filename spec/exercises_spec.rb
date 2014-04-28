@@ -14,8 +14,16 @@ describe 'Exercise 0' do
 end
 
 describe 'Exercise 1' do
-  it "returns the number of elements in the array" do
-    array_count = Exercises.ex1([1, 2, 3, 4, 5])
-    expect(result).to eq(5)
+  xit "returns the number of elements in the array" do
+    array = Exercises.ex1([1, 2, 3, 4, 5])
+    expect(array.length).to eq(5)
+  end
+end
+
+
+describe '.ex5' do
+  it "should call puts with the element of a 1 element array" do
+  STDOUT.should_receive(:puts).with(10)
+  Exercises.ex5([10])
   end
 end

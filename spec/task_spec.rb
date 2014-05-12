@@ -70,12 +70,16 @@ describe 'Task' do
     task1 = TM::Task.new
     task2 = TM::Task.new
     task3 = TM::Task.new
-    sorted_tasks[0] == task1
-    sorted_tasks[1] == task2
+    expect(sorted_tasks[0]).to eq(task1)
+    expect(sorted_tasks[1]).to eq(task2)
     sorted_tasks[2] == task3
   end
 
   xit "it can be sorted by priority" do
+    task_1 = TM::Task.new
+    task_2 = TM::Task.new
+    task_3 = TM::Task.new
+    expect(sorted_task.by_priority).to eq([task_2, task_1, task_3])
   end
 
   xit "it can be sorted by date if priority is the same" do

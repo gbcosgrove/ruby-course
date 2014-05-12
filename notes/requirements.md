@@ -1,5 +1,51 @@
 ## Task Manager Requirements
 
+**Use Cases**
+
+Title: *What is the goal?* *verb-noun*
+Actor: *Who desires it?*
+Scenario: *How is it accomplished?*
+
+Title: Create Project
+Actor: User
+Scenario: User creates a project and inputs name.  A date and ID are generated and associated with the project.  
+
+Title: Create Task
+Actor: User
+Scenario: User creates task with description and priority and associates it with a project.  Generate task ID and creation date.  Associate task with a project.
+
+Title: Destroy project
+Actor: User
+Scenario: User deletes projects.  All associated tasks are deleted.
+
+Title: Mark task complete
+Actor:
+Scenario: User finishes task and marks done.  The task does not appear associated with active tasks afterwards.
+
+Title: Sort tasks by complete status
+Actor: User
+Scenario: User views all complete tasks for all projects.  User specifies project and sees complete tasks associated with it.
+
+Title: Sort incomplete tasks
+Actor: User
+Scenario: User views all incomplete tasks associated with a project and sorts them by priority and then origination date.
+
+Title: Create project for database
+Actor: User
+Scenario: User creates project and it is formatted to be stored in a database. The user does this so that the project is saved even if they quit the program.
+
+Title: Get project in database
+Actor: User
+Scenario: User queries the database and retrieves the project they are looking for by passing in project ID or name.  The project is returned to the User.
+
+Title: Update project in database
+Actor: User
+Scenario: User updates existing projects in the database by using it's associated ID number.
+
+Title: Delete project in database
+Actor: User
+Scenario: User deletes project and all associated tasks are deleted with it.
+
 *Phase 1*
 
 #### Projects/Tasks

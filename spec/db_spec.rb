@@ -22,9 +22,33 @@ describe TM::DB do
     end
   end
 
-  describe 'db storing projects' do
-    it 'stores the project as a hash' do
+   describe "projects inside db" do
+    it "contains storage for projects" do
       expect(TM.db.projects).to be_a(Hash)
+    end
+
+    describe "#create_project" do
+      let(:project) {TM.db.create_project(:name => "My Project")}
+
+      it "creates a new project entity" do
+        expect(project).to be_a(TM::Project)
+        expect(project.pid).to be_a(Fixnum)
+        expect(project.name).to eq("My Project")
+      end
+
+      it "stores information in the db" do
+        expect(TM.db.projects[project.pid]).to eq({
+          :name => "My Project",
+          :pid => project.pid
+        })
+      end
+
+
+      it "gives a unique id every time" do
+        p1 = TM.db.create_project(:name => "p1")
+        p2 = TM.db.create_project(:name => "p1")
+        expect(p1.pid).to_not eq(p2.pid)
+      end
     end
   end
 

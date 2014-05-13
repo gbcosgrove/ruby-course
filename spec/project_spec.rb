@@ -17,11 +17,12 @@ it "has a name" do
 end
 
 it "has a default name when user does not pass a name" do
-  expect(TM::Project.new.name).to eq("New Project")
+  new_project = TM::Project.new
+  expect(new_project.name).to eq("New Project")
 end
 
 it "is timestapped with a creation date" do
-  expect(TM::Project.new.created.to_i).to eq(Time.now.to_i)
+  expect(TM::Project.new({:name => "My New Project"}).created.to_i).to eq(Time.now.to_i)
 end
 
 

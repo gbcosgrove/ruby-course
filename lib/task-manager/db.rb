@@ -1,11 +1,12 @@
-
-
 module TM
+
   class DB
+
   end
 
-  def self.DB
-    @__db_instance.nil? ||= TM::DB.new
+  def self.db
+    @__db_instance ||= TM::DB.new
   end
 
 end
+

@@ -15,7 +15,7 @@ describe TM::DB do
       expect(db).to be_a(TM::DB)
     end
 
-    xit "returns same db object every time" do
+    it "returns same db object every time" do
       db = TM.db
       db2 = TM.db
       expect(db).to be(db2)

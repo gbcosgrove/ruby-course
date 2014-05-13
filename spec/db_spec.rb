@@ -24,7 +24,7 @@ describe TM::DB do
 
   describe 'db storing projects' do
     it 'stores the project as a hash' do
-      expect(TM.db.create_project).to be_a(Hash)
+      expect(TM.db.projects).to be_a(Hash)
     end
   end
 

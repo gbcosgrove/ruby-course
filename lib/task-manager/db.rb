@@ -8,5 +8,16 @@ module TM
     @__db_instance ||= TM::DB.new
   end
 
+  def create_project
+  end
+
+  def get_project
+  end
+
+  def update_project
+  end
+
+  def delete_project
+  end
 end
 

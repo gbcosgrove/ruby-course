@@ -10,6 +10,7 @@ attr_reader :name, :created, :pid
     @created = Time.now
     @pid = pid
 
+
   end
 
 end

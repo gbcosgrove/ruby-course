@@ -16,7 +16,11 @@ module TM
       TM::Project.new(data[:name], data[:pid])
     end
 
-    def get_project
+    def get_project(id)
+      data = @projects[id]
+      if data.nil?
+        TM::Project.new(data[:name], data[:pid])
+      end
     end
 
     def update_project

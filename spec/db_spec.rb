@@ -50,6 +50,16 @@ describe TM::DB do
         expect(p1.pid).to_not eq(p2.pid)
       end
     end
+
+    describe "#get_project" do
+      xit "returns a project entity with the proper data" do
+
+      end
+
+      xit "returns nil if the project doesn't exist" do
+
+      end
+    end
   end
 
 

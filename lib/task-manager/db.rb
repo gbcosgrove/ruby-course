@@ -4,26 +4,26 @@ module TM
 
   class DB
 
-    attr_reader :projects, :project_count, :pid, :task_count, :tid, :priority, :created, :complete
+    attr_reader :projects, :tasks, :project_count, :task_count, :id
 
     def initialize
       @projects = {}
       @project_count = 0
+      @tasks = {}
+      @task_count = 0
     end
 
     def create_project(data)
-      @project_count += 1
-      @task_count = 0
-      @tasks = {}
-      data[:pid] = @project_count
-      @projects[ data[:pid] ] = data
-      TM::Project.new(data[:name], data[:pid])
+      @project_count +=1
+      data[:id] = @project_count
+      @projects[ data[:id] ] = data
+      project = TM::Project.new(data[:name], data[:id])
     end
 
     def get_project(id)
       data = @projects[id]
       if !data.nil?
-        TM::Project.new(data[:name], data[:pid])
+        TM::Project.new(data[:name], data[:id])
       end
 
     end
@@ -37,12 +37,17 @@ module TM
       @projects.delete(id)
     end
 
-    def create_task(pid, data)
-      @task_count += 1
-      data[:tid] = @task_count
-      @tasks[ data[:tid] ] = data
+    def create_task(data)
+      increment_task_id
       task = TM::Task.new(data[:description], data[:priority])
-      @project[pid] = task
+    end
+
+    def create_tasks_hash
+      @tasks = {}
+    end
+
+    def increment_task_id
+      @task_id += 1
     end
 
   end

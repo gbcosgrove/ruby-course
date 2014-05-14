@@ -2,15 +2,12 @@
 
 class TM::Project
 
-attr_reader :name, :created, :pid
+attr_reader :id, :name
 
-  def initialize(name="New Project", pid=nil)
+  def initialize(id, name)
 
+    @id = id
     @name = name
-    @created = Time.now
-    @pid = pid
-
-
   end
 
 end

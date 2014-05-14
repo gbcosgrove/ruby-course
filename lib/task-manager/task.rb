@@ -1,22 +1,16 @@
 
 class TM::Task
 
-attr_reader :description, :created, :complete, :priority
+attr_reader :id, :project_id, :description, :priority, :complete, :created
 
 
-def initialize(description, priority=1)
+def initialize(id, project_id, description, priority, complete, created)
+  @id = id
+  @project_id = project_id
   @description = description
-  @created = Time.now
-  @complete = false
   @priority = priority
-end
-
-def update_description(update)
-  @description = update
-end
-
-def change_priority(change)
-  @priority = change
+  @complete = complete
+  @created = created
 end
 
 

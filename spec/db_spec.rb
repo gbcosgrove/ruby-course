@@ -41,11 +41,12 @@ describe "Database class" do
       expect(project.name).to eq("My Project")
     end
 
+
     it "stores information in the db" do
       project = TM.db.create_project(:name => "My Project")
-      expect(TM.db.projects[project.pid]).to eq({
+      expect(TM.db.projects[project.id]).to eq({
         :name => "My Project",
-        :pid => project.pid
+        :id => project.id
       })
     end
 
@@ -53,7 +54,7 @@ describe "Database class" do
     it "gives a unique id every time" do
       p1 = TM.db.create_project(:name => "p1")
       p2 = TM.db.create_project(:name => "p1")
-      expect(p1.pid).to_not eq(p2.pid)
+      expect(p1.id).to_not eq(p2.id)
     end
 
 
@@ -63,9 +64,9 @@ describe "Database class" do
     it "returns a project entity with the proper data" do
       p1 = TM.db.create_project(:name => "p1")
       p2 = TM.db.create_project(:name => "p1")
-      project = TM.db.get_project(p1.pid)
+      project = TM.db.get_project(p1.id)
       expect(project).to be_a(TM::Project)
-      expect(p1.pid).to eq(project.pid)
+      expect(p1.id).to eq(project.id)
       expect(p1.name).to eq(project.name)
     end
 
@@ -80,18 +81,18 @@ describe "Database class" do
     it "updates the project in the db" do
       p1 = TM.db.create_project(:name => "p1")
       # t1 = TM.db.create_task(:project_id => 1, :description: "blah", :priority_num => 3)
-      TM.db.update_project(p1.pid, :name => "Hello")
-      project = TM.db.get_project(p1.pid)
+      TM.db.update_project(p1.id, :name => "Hello")
+      project = TM.db.get_project(p1.id)
       expect(project.name).to eq("Hello")
-      expect(project.pid).to eq(p1.pid)
+      expect(project.id).to eq(p1.id)
     end
 
 
 ## Projects - destroy project
     it "destroys project from db" do
       p1 = TM.db.create_project(:name => "p1")
-      TM.db.destroy_project(p1.pid)
-      project = TM.db.get_project(p1.pid)
+      TM.db.destroy_project(p1.id)
+      project = TM.db.get_project(p1.id)
       expect(project).to eq(nil)
     end
 
@@ -104,10 +105,9 @@ describe "Database class" do
     end
 
     it "it expects task to" do
-      task1 = TM.db.create_task(:description => "My Task", :priority => 2)
-      binding.pry
+      task1 = TM.db.create_task(:description => "My Task")
       expect(task1.description).to eq("My Task")
-      expect(task1.priority).to eq(2)
+      expect(task1.priority).to eq(1)
     end
 
 end

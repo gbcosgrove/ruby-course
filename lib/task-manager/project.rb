@@ -4,10 +4,11 @@ class TM::Project
 
 attr_reader :id, :name
 
-  def initialize(id, name)
+  def initialize(name, id)
 
-    @id = id
     @name = name
+    @id = id
+
   end
 
 end

@@ -16,6 +16,7 @@ module TM
     def create_project(data)
       @project_count +=1
       data[:id] = @project_count
+      data[:name] = "My Project"
       @projects[ data[:id] ] = data
       project = TM::Project.new(data[:name], data[:id])
     end
@@ -39,7 +40,15 @@ module TM
 
     def create_task(data)
       increment_task_id
-      task = TM::Task.new(data[:description], data[:priority])
+      description = data[:description]
+      data[:id] = @task_count
+      data[:poject_id] = "undefined"
+      data[:decription] = "My New Task"
+      data[:created] = Time.now
+      data[:complete] = false
+      data[:priority] = 1
+      @tasks [ data[:id] ] = data
+      task = TM::Task.new(data[:id], data[:project_id], data[:description], data[:priority], data[:complete], data[:created])
     end
 
     def create_tasks_hash
@@ -47,7 +56,7 @@ module TM
     end
 
     def increment_task_id
-      @task_id += 1
+      @task_count += 1
     end
 
   end

@@ -1,5 +1,5 @@
 require 'spec_helper.rb'
-
+require 'pry'
 
 # Expectations
 # DB can create a project
@@ -27,6 +27,8 @@ describe TM::DB do
       expect(TM.db.projects).to be_a(Hash)
     end
 
+
+
     describe "#create_project" do
       let(:project) {TM.db.create_project(:name => "My Project")}
 
@@ -51,16 +53,63 @@ describe TM::DB do
       end
     end
 
-    describe "#get_project" do
-      xit "returns a project entity with the proper data" do
 
+    describe "#get_project" do
+      # before(:each) do
+      #   @projects = {}
+      #   @project_count = 0
+      # end
+
+      it "returns a project entity with the proper data" do
+        p1 = TM.db.create_project(:name => "p1")
+        p2 = TM.db.create_project(:name => "p1")
+        project = TM.db.get_project(p1.pid)
+        expect(project).to be_a(TM::Project)
+        expect(p1.pid).to eq(project.pid)
+        expect(p1.name).to eq(project.name)
       end
 
-      xit "returns nil if the project doesn't exist" do
 
+      it "returns nil if the project doesn't exist" do
+        project = TM.db.get_project(24)
+        expect(project).to eq(nil)
+      end
+
+    describe "#update_project" do
+      it "updates the project in the db" do
+        p1 = TM.db.create_project(:name => "p1")
+        # t1 = TM.db.create_task(:project_id => 1, :description: "blah", :priority_num => 3)
+        TM.db.update_project(p1.pid, :name => "Hello")
+        project = TM.db.get_project(p1.pid)
+        expect(project.name).to eq("Hello")
+        expect(project.pid).to eq(p1.pid)
       end
     end
+
+    describe "#destroy_project" do
+      it "destroys project from db" do
+        p1 = TM.db.create_project(:name => "p1")
+        TM.db.destroy_project(p1.pid)
+        project = TM.db.get_project(p1.pid)
+        expect(project).to eq(nil)
+      end
+    end
+
+    describe "#create_task in db" do
+      before(:each) do
+        @project = {}
+        @project_count = 0
+      end
+      it "creates a new task entity"
+        p1 = TM.db.create_project(:name => "p1")
+        task = TM.db.create_task(1, {:description => "task1", :priority => 3})
+        expect(task.tid).to eq(1)
+        exepct(task.priority).to eq(3)
+        expect(task.description).to be("task1")
+        expect(task.pid).to eq(1)
+      end
+    end
+
+
   end
-
-
 end

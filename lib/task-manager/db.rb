@@ -17,7 +17,7 @@ module TM
       @project_count +=1
       data[:id] = @project_count
       @projects[ data[:id] ] = data
-      project = TM::Project.new(data[:name]="My Project", data[:id])
+      TM::Project.new(data[:name]="My Project", data[:id])
     end
 
     def get_project(id)

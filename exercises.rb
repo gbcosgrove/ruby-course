@@ -1,5 +1,6 @@
 
 module Exercises
+require 'pry-debugger'
   # Exercise 0
   #  - Triples a given string `str`
   #  - Returns "nope" if `str` is "wishes"
@@ -13,20 +14,21 @@ module Exercises
 
   # Exercise 1
   #  - Returns the number of elements in the array
-  def self.ex1(array)
 
+  def self.ex1(array)
+    array.count
   end
 
   # Exercise 2
   #  - Returns the second element of an array
   def self.ex2(array)
-
+    array[1]
   end
 
   # Exercise 3
   #  - Returns the sum of the given array of numbers
   def self.ex3(array)
-    # TODO
+    array.inject {|memo, x| memo + x}
   end
 
   # Exercise 4

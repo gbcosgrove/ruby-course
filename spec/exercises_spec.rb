@@ -14,22 +14,22 @@ describe 'Exercise 0' do
 end
 
 describe 'Exercise 1' do
-  xit "returns the number of elements in the array" do
-    result = Exercises.ex1 [1]
-    expect result.length.to eq(1)
-
+  it "returns the number of elements in the array" do
+    expect(Exercises.ex1([])).to eq(0)
+    expect(Exercises.ex1([1,2,3])).to eq(3)
   end
 end
 
 describe 'Exercise 2' do
-  xit "returns the second element of an array" do
-    result = Exercises.ex2([1,2,3,4,5])
-    expect(result[1]).to eq(2)
+  it "returns the second element of an array" do
+    expect(Exercises.ex2([5,10,15,20])).to eq(10)
   end
 end
 
 describe 'Exercise 3' do
-  xit 'returns the sume of the given array of numbers' do
+  it 'returns the sum of the given array of numbers' do
+    exercise3 = [1, 2, 3, 4, 5]
+    expect(exercise3)
   end
 end
 

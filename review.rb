@@ -27,7 +27,7 @@ class HashProblems
   # # # # # # #
 
   def self.update_top_compartment_item(wardrobe_hash)
-    # TODO: Complete this method by writing A SINGLE LINE
+    wardrobe_hash.update(hash) {|k,v| f(v)}
   end
 
 end
@@ -40,7 +40,7 @@ class ArrayProblems
   # # # # # # #
 
   def self.add_cat_to_array(array)
-    # TODO: Complete this method
+    @array = array
   end
 
   # # # # # # #

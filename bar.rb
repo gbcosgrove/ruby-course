@@ -2,6 +2,7 @@ require 'time' # you're gonna need it
 
 class Bar
   attr_reader :name, :menu_items
+  attr_writer :hours
 
 
   def initialize(name="The Irish Yodel")
@@ -28,13 +29,17 @@ class Bar
     end
   end
 
+  def hours
+    @hours = Time.now.hour
+  end
+
 
   def add_menu_item(item, price)
     @menu_items << Food.new(item, price)
   end
 
   def happy_hour?
-    Time.now.hour == 15
+    @hours == 15 ? true : false
   end
 
 class Food

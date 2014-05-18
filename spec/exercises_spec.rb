@@ -29,12 +29,14 @@ end
 describe 'Exercise 3' do
   it 'returns the sum of the given array of numbers' do
     exercise3 = [1, 2, 3, 4, 5]
-    expect(exercise3)
+    expect(Exercises.ex3(exercise3)).to eq(15)
   end
 end
 
 describe 'Exercise 4' do
-  xit 'Returns the max number of the given array of numbers' do
+  it 'Returns the max number of the given array of numbers' do
+    exercise4 = [4, 8, 3, 12, 7]
+    expect(Exercises.ex4(exercise4)).to eq(12)
   end
 end
 
@@ -45,22 +47,45 @@ describe '.ex5' do
   end
 end
 
+
 describe 'Exercise 6' do
-  xit 'updates the last it in the array to panda' do
+  it 'updates the last value in the array to panda' do
+    array = ["bear", "monkey"]
+    Exercises.ex6(array)
+    expect(array.last).to eq("panda")
+
+    array = ["bear", "monkey", "panda"]
+    Exercises.ex6(array)
+    expect(array.last).to eq("godzilla")
   end
 end
 
 describe 'Exercise 7' do
-  xit 'adds str to the array if str does not exist' do
+  it 'adds str to the array if str does not exist' do
+    array = ["foo", "bar", "biz", "bazz"]
+    string = "bar"
+    expect(Exercises.ex7(array, string).last).to eq("bar")
+
+    string = "buzz"
+    expect(Exercises.ex7(array, string).last).to eq("bar")
   end
 end
 
 describe 'Exercise 8' do
-  xit "it iterates through hash 'people and prints out their name and occupation" do
+  it "it iterates through hash 'people and prints out their name and occupation" do
+    STDOUT.should_receive(:puts).with("Bob: Builder")
+
+    people = [{:name => "Bob", :occupation => "Builder"}]
+
+    Exercises.ex8(people)
   end
 end
+# binding.pry
+
 
 describe 'Exercise 9' do
-  xit 'it returns ture if the given time is in a leap year' do
+  it 'it returns true if the given time is in a leap year' do
+    time = Time.now
+    expect(Exercises.ex9(time)).to eq(false)
   end
 end

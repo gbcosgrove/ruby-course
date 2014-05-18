@@ -34,7 +34,7 @@ require 'pry-debugger'
   # Exercise 4
   #  - Returns the max number of the given array
   def self.ex4(array)
-    # TODO
+    array.max
   end
 
   # Exercise 5
@@ -49,22 +49,29 @@ require 'pry-debugger'
   #  - If the last item is already 'panda', update
   #    it to 'GODZILLA' instead
   def self.ex6(array)
-    # TODO
+    array.last == "panda" ? array << "godzilla" : array << "panda"
   end
 
   # Exercise 7
   #  - If the string `str` exists in the array,
   #    add `str` to the end of the array
   def self.ex7(array, str)
-    # TODO
+    if array.include?(str)
+      array << str
+    else
+      array
+    end
   end
+
 
   # Exercise 8
   #  - `people` is an array of hashes. Each hash is like the following:
   #    { :name => 'Bob', :occupation => 'Builder' }
   #    Iterate through `people` and print out their name and occupation.
   def self.ex8(people)
-    # TODO
+      people.each do |person|
+        puts "#{person[:name]}: #{person[:occupation]}"
+      end
   end
 
   # Exercise 9
@@ -72,7 +79,7 @@ require 'pry-debugger'
   #    Otherwise, returns `false`
   # Hint: Google for the wikipedia article on leap years
   def self.ex9(time)
-    # TODO
+    time.year % 4 == 0 ? true : false
   end
 end
 

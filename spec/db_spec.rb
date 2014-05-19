@@ -24,9 +24,8 @@ describe TM::DB do
 end
 
 describe "Database class" do
-    before(:each) do
-      db = TM::DB.new
-    end
+  let(:project) {TM.db.create_project(:name => "My Project")}
+
 
 ## Projects - create_project
     it "contains storage for projects" do
@@ -35,7 +34,6 @@ describe "Database class" do
 
 
     it "creates a new project entity" do
-      project = TM.db.create_project(:name => "My Project")
       expect(project).to be_a(TM::Project)
       expect(project.id).to be_a(Fixnum)
       expect(project.name).to eq("My Project")
@@ -43,7 +41,6 @@ describe "Database class" do
 
 
     it "stores information in the db" do
-      project = TM.db.create_project(:name => "My Project")
       expect(TM.db.projects[project.id]).to eq({
         :name => "My Project",
         :id => project.id
@@ -100,17 +97,51 @@ describe "Database class" do
 
 ## Task - create_tasks
 
+  describe "tasks" do
+
+    before(:each) do
+      TM.db.projects = {}
+      TM.db.project_count = 0
+      TM.db.tasks = {}
+      TM.db.task_count = 0
+    end
+
+    let(:project) {TM.db.create_project( name: "Write RSpec Test")}
+    let(:task) {TM.db.create_task( description: "My Task", priority: 2)}
+
+
     it "has an empty tasks hash" do
       expect(TM.db.tasks).to eq({})
     end
 
-    it "it expects task to" do
-      task1 = TM.db.create_task(:description => "My Task")
-      expect(task1.description).to eq("My Task")
-      expect(task1.priority).to eq(1)
+    it "takes a description" do
+      expect(task.description).to eq("My Task")
     end
 
+    it "takes a priority" do
+      expect(task.priority).to eq(2)
+    end
+
+## Go back and fix this test. Id method works fine, I've just instantiated a bucn of other tasks.
+    it "has a task id" do
+      expect(task.id).to eq(1)
+    end
+
+    it "has starts with a complete status of false" do
+      expect(task.complete).to eq(false)
+    end
+
+    it "has a creation date" do
+      expect(task.created.to_i).to eq(Time.now.to_i)
+    end
+
+## Associate task with project
+
+
+
+  end
 end
+
 
 
 

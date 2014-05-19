@@ -4,7 +4,7 @@ module TM
 
   class DB
 
-    attr_reader :projects, :tasks, :project_count, :task_count, :id
+    attr_accessor :projects, :tasks, :project_count, :task_count, :id
 
     def initialize
       @projects = {}
@@ -39,10 +39,9 @@ module TM
 
     def create_task(data)
       increment_task_id
-      description = data[:description]
       data[:id] = @task_count
       @tasks [ data[:id] ] = data
-      task = TM::Task.new(data[:id], data[:project_id], data[:description]="My Task", data[:priority]=1, data[:complete]=false, data[:created]=Time.now)
+      task = TM::Task.new(data[:id], data[:project_id], data[:description], data[:priority], data[:complete], data[:created])
     end
 
     def create_tasks_hash
@@ -52,6 +51,16 @@ module TM
     def increment_task_id
       @task_count += 1
     end
+
+## Associate tasks with project
+    def associate_project
+    end
+
+## Sort tasks by priority
+
+## Sort complete tasks
+
+
 
   end
 

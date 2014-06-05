@@ -97,7 +97,6 @@ describe Bar do
     end
   end
 
-  binding.pry
 
   context "During normal hours" do
     it "doesn't give a discount outside of happy hour" do
